@@ -1,0 +1,59 @@
+@extends('layouts.default')
+
+@section('title', 'Users List Page')
+
+@section('content')
+            <div class="d-flex justify-content-between mt-4">
+                <h2>User List</h2>
+                <button class="btn btn-dark" onclick="addUser()">+ Add User</button>
+            </div>
+            <div class="mt-2">
+                @if (\Session::has('success'))
+                    <div class="alert alert-success">
+                        <p>{{\Session::get('success') }}</p>
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <table class="table mt-2">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Position</th>
+                        <th scope="col" colspan="2">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($users as $user)
+                    <tr id="user{{$user['user_id']}}" data-name="{{$user['name']}}" data-username="{{$user['user_name']}}" data-email="{{$user['email']}}" data-role="{{$user['position']}}" data-department="{{$user['department_id']}}">
+                        <th scope="row">{{$user['name']}}</th>
+                        <td>{{$user['department_name']}}</td>
+                        <td>{{ucfirst($user['position'])}}</td>
+                        <td><button href="" class="btn btn-dark" onclick="editUser('user{{$user['user_id']}}')">Edit</button></td>
+                        <td>
+                            <form action="{{action('UserController@destroy', $user['user_id'])}}" method="post">
+                                {{csrf_field()}}
+                                <input name="_method" type="hidden" value="DELETE">
+                                <button class="btn btn-dark d-inline" type="submit" onclick="return confirm('Are you sure want to delete this user?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+                {{ $users->links() }}
+            </div>
+@endsection
+@section('script')
+    @include('inc.script')
+    @include('edituserpopup')
+    @include('adduserpopup')
+@endsection

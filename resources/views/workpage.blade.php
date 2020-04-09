@@ -22,7 +22,7 @@
             </div>
         @endif
             @foreach($works as $work)
-        <div id="accordion" class="mt-3">
+        <div id="accordion" class="mt-3 col-md-8">
             <div class="card">
                 <div class="card-header" id="heading{{$work['work_id']}}">
                     <h5 class="mb-0">
@@ -51,7 +51,7 @@
                             @endif
                         @endforeach
                         <div class="text-center">
-                            <button class="btn btn-light" onclick="addTask()">+ Add Task</button>
+                            <button class="btn btn-light" onclick="addTask({{ $work['work_id'] }})">+ Add Task</button>
                         </div>
                     </div>
                 </div>

@@ -9,8 +9,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{action('UserController@store')}}" id="addForm">
+                <form method="post" action="{{action('TaskController@store')}}" id="addForm">
                     {{csrf_field()}}
+                    <input id="workId" type="hidden" value="{{ $work['work_id'] }}" name="work_id">
                     <div class="form-group">
                         <label for="addtaskname">Task Name</label>
                         <input type="text" name="task_name" id="addtaskname" class="form-control">
@@ -38,7 +39,8 @@
     </div>
 </div>
     <script>
-        function addTask() {
+        function addTask(work_id) {
+            document.getElementById('workId').value = work_id;
             $("#addTaskModal").modal()
         }
     </script>

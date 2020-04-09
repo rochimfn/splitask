@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -21,31 +22,25 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    protected function authenticated(Request $request, $user)
+    {
+        if($user->position == 'administrator') {
+            return redirect('/users');
+        } elseif ($user->position == 'chief') {
+            return redirect('/departments');
+        } elseif ($user->position == 'manager') {
+            return redirect('/works');
+        } elseif ($user->position == 'staff') {
+            return redirect('/tasks');
+        }
+    }
+
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo;
-    public function redirecTo($request)
-    {
-        if(Auth::user()->position == 'administrator')
-        {
-            return route('users');
-        } elseif (Auth::user()->position == 'chief')
-        {
-            return route('users');
-        } elseif (Auth::user()->position == 'manager')
-        {
-            return route('users');
-        } elseif (Auth::user()->position == 'staff')
-        {
-            return route('users');
-        } else
-        {
-            return route('login')->withError('Something wrong, contact the Administrator');
-        }
-    }
+    protected $redirectTo = '/login';
 
     public function username()
     {

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\User;
+use App\Work;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -40,7 +43,18 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = $this->validate(
+            request(),[
+                'task_name' => 'required',
+                'task_description' => 'required',
+                'task_deadline' => 'required',
+                'user_id' => 'required|numeric',
+                'work_id' => 'required|numeric'
+            ]
+        );
+        $task['task_status'] = 0;
+        Task::create($task);
+        return redirect('works')->with('success', 'Task has been created');
     }
 
     /**
@@ -52,7 +66,9 @@ class TaskController extends Controller
     public function show($id)
     {
         $task = Task::join('users','tasks.user_id','=','users.user_id')->where('tasks.task_id',$id)->first();
-        return view('taskdetailspage')->with('task', $task);
+        $work = Work::where('work_id', $task->work_id)->first();
+        $users = User::where('department_id',$work->department_id)->get();
+        return view('taskdetailspage')->with('task', $task)->with('users', $users);
     }
 
     /**
@@ -75,7 +91,20 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate(
+            request(),[
+                'task_name' => 'required',
+                'task_description' => 'required',
+                'task_deadline' => 'required',
+                'user_id' => 'required|numeric',
+                'work_id' => 'required|numeric'
+            ]
+        );
+        $input = $request->except(['_token', '_method']);
+        $task = Task::where('task_id', $id)->first();
+        $task->fill($input);
+        $task->save();
+        return redirect()->back()->with('success', 'Task has been updated');
     }
 
     /**
@@ -86,6 +115,12 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::find($id);
+        if(Auth::user()->position == 'manager') {
+            $task->delete();
+            return redirect('works')->with('success', 'Task has been deleted');
+        } else {
+            return redirect('works')->withErrors('Can\'t delete Task, make sure you\'re Manager');
+        }
     }
 }

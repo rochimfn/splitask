@@ -13,10 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/', function ()
+{
+    return redirect('login');
 });
-Route::resource('works','WorkController');
+Route::resource('works','WorkController')->middleware('manager');
 Route::resource('tasks','TaskController');
 
 Route::get('users', 'UserController@index')->name('users.index')->middleware('admin');

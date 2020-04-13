@@ -39,22 +39,22 @@
                 @if($task['task_status'] == 0)
                     <h5>On Progress</h5></li>
                     <li class="list-group-item text-right text-white">
-                        <button class="btn btn-dark" disabled>See Report</button>&nbsp;<a class="btn btn-dark">Approve</a>&nbsp;
+                        <button class="btn btn-dark" disabled>See Report</button>&nbsp;<button class="btn btn-dark">Action</button>&nbsp;
                     </li>
                 @elseif($task['task_status'] == 1)
                     <h5>Approved</h5></li>
                     <li class="list-group-item text-right text-white">
-                        <button class="btn btn-dark">See Report</button>&nbsp;<a class="btn btn-dark">Approve</a>&nbsp;
+                        <a class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" onclick="taskAction({{ $task['task_id'] }})">Action</button>&nbsp;
                     </li>
                 @elseif($task['task_status'] == 2)
                     <h5>Reported</h5></li>
                     <li class="list-group-item text-right text-white">
-                        <button class="btn btn-dark">See Report</button>&nbsp;<a class="btn btn-dark">Approve</a>&nbsp;
+                        <a class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" disabled>Action</button>&nbsp;
                     </li>
                 @elseif($task['task_status'] == 3)
                     <h5>Rejected</h5></li>
                     <li class="list-group-item text-right text-white">
-                        <a class="btn btn-dark">See Report</a>&nbsp;<a class="btn btn-dark">Approve</a>&nbsp;
+                        <a class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" disabled>Action</button>&nbsp;
                     </li>
                 @endif
             </ul>
@@ -64,4 +64,9 @@
 @section('script')
     @include('inc.script')
     @include('edittaskpopup')
+    <script>
+        function taskAction(task) {
+            $("#taskAction").modal
+        }
+    </script>
 @endsection

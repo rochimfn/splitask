@@ -7,5 +7,11 @@
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mariadb://localhost:3306/splitask</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="splitask@localhost [2]" uuid="cb1d4b04-9630-4cd7-b610-dffa81df1124">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/splitask</jdbc-url>
+    </data-source>
   </component>
 </project>

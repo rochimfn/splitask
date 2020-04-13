@@ -56,6 +56,41 @@ class TaskController extends Controller
         Task::create($task);
         return redirect('works')->with('success', 'Task has been created');
     }
+    public function storeReport(Request $request, $id)
+    {
+        if($request->hasFile('task_report')) {
+            $fileNameToStore = time().'_'.$request->file('work_report')->getClientOriginalName();
+            $path = $request->file('task_report')->storeAs('public/task_report', $fileNameToStore);
+        }
+//        status list
+//        0 = On Progress
+//        1 = Approved
+//        2 = Reported
+//        3 = Rejected
+
+        $task = Task::find($id);
+        $task->task_report = $fileNameToStore;
+        $task->status = 2;
+        $task->save();
+
+        return redirect()->back()->with('success', 'Report Submitted');
+    }
+    public function disapproveTask($id)
+    {
+        $task = Task::find($id);
+        $task->status = 3;
+        $task->save();
+
+        return redirect()->back()->with('success', 'Report Rejected');
+    }
+    public function approveTask($id)
+    {
+        $task = Task::find($id);
+        $task->status = 1;
+        $task->save();
+
+        return redirect()->back()->with('success', 'Report Rejected');
+    }
 
     /**
      * Display the specified resource.

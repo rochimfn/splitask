@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Work;
@@ -43,6 +44,26 @@ class WorkController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function storeReport(Request $request, $id)
+    {
+        if($request->hasFile('work_report')) {
+            $fileNameToStore = time().'_'.$request->file('work_report')->getClientOriginalName();
+            $path = $request->file('work_report')->storeAs('public/work_report', $fileNameToStore);
+        }
+//        status list
+//        0 = On Progress
+//        1 = Approved
+//        2 = Reported
+//        3 = Rejected
+
+        $work = Work::find($id);
+        $work->work_report = $fileNameToStore;
+        $work->status = 2;
+        $work->save();
+
+        return redirect()->back()->with('success', 'Report Submitted');
     }
 
     /**

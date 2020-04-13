@@ -37,7 +37,7 @@
                             <p>Asiggned Date : {{ substr($work['created_at'], 0, 11) }}</p>
                         </div>
                         <div class="col-sm-4">
-                            <button class="btn btn-dark">Add Report</button>
+                            <button class="btn btn-dark" onclick="addWorkReport({{ $work['work_id'] }})">Add Report</button>
                         </div>
                     </div>
                 </div>
@@ -63,4 +63,5 @@
 @section('script')
     @include('inc.script')
     @include('addtaskpopup')
+    @include('addworkreportpopup')
 @endsection

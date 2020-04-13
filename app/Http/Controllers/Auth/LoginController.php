@@ -25,13 +25,13 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if($user->position == 'administrator') {
-            return redirect('/users');
+            return redirect('/administrator');
         } elseif ($user->position == 'chief') {
-            return redirect('/departments');
+            return redirect('/chief');
         } elseif ($user->position == 'manager') {
-            return redirect('/works');
+            return redirect('/manager');
         } elseif ($user->position == 'staff') {
-            return redirect('/tasks');
+            return redirect('/staff');
         }
     }
 
@@ -40,7 +40,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+    protected $redirectTo = '/';
 
     public function username()
     {

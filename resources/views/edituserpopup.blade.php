@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <form method="post" action="" id="editForm">
                     {{csrf_field()}}
-                    <input name="_method" type="hidden" value="PATCH">
+                    @method('PATCH')
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" name="name" id="name" class="form-control">

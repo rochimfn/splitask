@@ -54,7 +54,7 @@ class TaskController extends Controller
         );
         $task['task_status'] = 0;
         Task::create($task);
-        return redirect('works')->with('success', 'Task has been created');
+        return redirect()->back()->with('success', 'Task has been created');
     }
     public function storeReport(Request $request, $id)
     {
@@ -75,21 +75,16 @@ class TaskController extends Controller
 
         return redirect()->back()->with('success', 'Report Submitted');
     }
-    public function disapproveTask($id)
+    public function updateStatusTask(Request $request, $id)
     {
         $task = Task::find($id);
-        $task->status = 3;
+        $task->task_status = $request->input('task_status');
         $task->save();
-
-        return redirect()->back()->with('success', 'Report Rejected');
-    }
-    public function approveTask($id)
-    {
-        $task = Task::find($id);
-        $task->status = 1;
-        $task->save();
-
-        return redirect()->back()->with('success', 'Report Rejected');
+        if($request->input('task_status') == 3) {
+          return redirect()->back()->withErrors('Report Rejected');
+        } elseif ($request->input('task_status') == 1) {
+          return redirect()->back()->with('success', 'Report Approved');
+        }
     }
 
     /**
@@ -153,9 +148,9 @@ class TaskController extends Controller
         $task = Task::find($id);
         if(Auth::user()->position == 'manager') {
             $task->delete();
-            return redirect('works')->with('success', 'Task has been deleted');
+            return redirect('manager')->with('success', 'Task has been deleted');
         } else {
-            return redirect('works')->withErrors('Can\'t delete Task, make sure you\'re Manager');
+            return redirect()->back()->withErrors('Can\'t delete Task, make sure you\'re Manager');
         }
     }
 }

@@ -46,7 +46,7 @@
                     <div class="card-body">
                         @foreach($tasks as $task)
                             @if($task['work_id'] == $work['work_id'])
-                        <a href="{{ action('TaskController@show',$task['task_id'])}}" class="text-decoration-none text-black-50"><h4>{{ $task['task_name'] }}</h4></a>
+                        <a href="{{ route('manager.task.show', $task['task_id'])}}" class="text-decoration-none text-black-50"><h4>{{ $task['task_name'] }}</h4></a>
                         <hr>
                             @endif
                         @endforeach

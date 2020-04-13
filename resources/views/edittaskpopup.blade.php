@@ -8,9 +8,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{action('TaskController@update', $task['task_id'])}}" id="editForm">
+                <form method="post" action="{{ route('manager.tasks.update', $task['task_id'])}}" id="editForm">
                     {{csrf_field()}}
-                    <input type="hidden" name="_method" value="PATCH">
+                    @method('PATCH')
                     <input type="hidden" name="work_id" value="{{ $task['work_id'] }}">
                     <div class="form-group">
                         <label for="edittaskname">Task Name</label>

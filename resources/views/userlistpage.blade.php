@@ -39,9 +39,9 @@
                         <td>{{ucfirst($user['position'])}}</td>
                         <td><button href="" class="btn btn-dark" onclick="editUser('user{{$user['user_id']}}')">Edit</button></td>
                         <td>
-                            <form action="{{action('UserController@destroy', $user['user_id'])}}" method="post">
+                            <form action="{{ route('administrator.destroy', $user['user_id']) }}" method="post">
                                 {{csrf_field()}}
-                                <input name="_method" type="hidden" value="DELETE">
+                                @method('DELETE')
                                 <button class="btn btn-dark d-inline" type="submit" onclick="return confirm('Are you sure want to delete this user?')">Delete</button>
                             </form>
                         </td>

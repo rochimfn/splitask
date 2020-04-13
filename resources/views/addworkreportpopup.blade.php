@@ -25,7 +25,7 @@
 </div>
 <script>
     function addWorkReport(work) {
-        document.querySelector('#editForm').action = `{{ action('WorkController@index') }}/${work}`;
+        document.querySelector('#editForm').action = `{{ action('WorkController@index') }}/${work}/report`;
         $("#addWorkReport").modal()
     }
 </script>

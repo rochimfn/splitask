@@ -36,7 +36,7 @@ class UserController extends Controller
         );
         $user['password'] = Hash::make($request->input('password'));
         User::create($user);
-        return redirect('users')->with('success','User has been added');
+        return redirect()->back()->with('success','User has been added');
     }
 
     public function edit($id)
@@ -62,7 +62,7 @@ class UserController extends Controller
         $user = User::where('user_id', $id)->first();
         $user->fill($input);
         $user->save();
-        return redirect('users')->with('success', 'User has been updated');
+        return redirect()->back()->with('success', 'User has been updated');
     }
 
     public function destroy($id)
@@ -72,6 +72,6 @@ class UserController extends Controller
         }
         $user = User::find($id);
         $user->delete();
-        return redirect('users')->with('success','User has been deleted');
+        return redirect()->back()->with('success','User has been deleted');
     }
 }

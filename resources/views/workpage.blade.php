@@ -34,7 +34,7 @@
                         <div class="col-sm-8 px-4">
                             <p>Description :  {{ $work['work_description'] }}</p>
                             <p>Deadline : {{ $work['work_deadline'] }}</p>
-                            <p>Asiggned Date : {{ substr($work['created_at'], 0, 11) }}</p>
+                            <p>Assigned Date : {{ substr($work['created_at'], 0, 11) }}</p>
                         </div>
                         <div class="col-sm-4">
                             <button class="btn btn-dark">Add Report</button>

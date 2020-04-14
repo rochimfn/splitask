@@ -37,7 +37,7 @@
                             <p>Assigned Date : {{ substr($work['created_at'], 0, 11) }}</p>
                         </div>
                         <div class="col-sm-4">
-                            <button class="btn btn-dark">Add Report</button>
+                            <button class="btn btn-dark" onclick="addWorkReport({{ $work['work_id'] }})">Add Report</button>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                     <div class="card-body">
                         @foreach($tasks as $task)
                             @if($task['work_id'] == $work['work_id'])
-                        <a href="{{ action('TaskController@show',$task['task_id'])}}" class="text-decoration-none text-black-50"><h4>{{ $task['task_name'] }}</h4></a>
+                        <a href="{{ route('manager.task.show', $task['task_id'])}}" class="text-decoration-none text-black-50"><h4>{{ $task['task_name'] }}</h4></a>
                         <hr>
                             @endif
                         @endforeach
@@ -63,4 +63,5 @@
 @section('script')
     @include('inc.script')
     @include('addtaskpopup')
+    @include('addworkreportpopup')
 @endsection

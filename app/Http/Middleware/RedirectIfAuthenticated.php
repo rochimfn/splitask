@@ -19,7 +19,16 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+            // return redirect(RouteServiceProvider::HOME);
+            if(Auth::user()->position == 'administrator') {
+                return redirect('/administrator');
+            } elseif (Auth::user()->position == 'chief') {
+                return redirect('/chief');
+            } elseif (Auth::user()->position == 'manager') {
+                return redirect('/manager');
+            } elseif (Auth::user()->position == 'staff') {
+                return redirect('/staff');
+            }
         }
 
         return $next($request);

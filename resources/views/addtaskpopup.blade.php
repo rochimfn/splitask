@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{action('TaskController@store')}}" id="addForm">
+                <form method="post" action="{{ route('manager.tasks.store') }}" id="addForm">
                     {{csrf_field()}}
                     <input id="workId" type="hidden" value="{{ $work['work_id'] }}" name="work_id">
                     <div class="form-group">

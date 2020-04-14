@@ -54,7 +54,37 @@ class TaskController extends Controller
         );
         $task['task_status'] = 0;
         Task::create($task);
-        return redirect('works')->with('success', 'Task has been created');
+        return redirect()->back()->with('success', 'Task has been created');
+    }
+    public function storeReport(Request $request, $id)
+    {
+        if($request->hasFile('task_report')) {
+            $fileNameToStore = time().'_'.$request->file('work_report')->getClientOriginalName();
+            $path = $request->file('task_report')->storeAs('public/task_report', $fileNameToStore);
+        }
+//        status list
+//        0 = On Progress
+//        1 = Approved
+//        2 = Reported
+//        3 = Rejected
+
+        $task = Task::find($id);
+        $task->task_report = $fileNameToStore;
+        $task->status = 2;
+        $task->save();
+
+        return redirect()->back()->with('success', 'Report Submitted');
+    }
+    public function updateStatusTask(Request $request, $id)
+    {
+        $task = Task::find($id);
+        $task->task_status = $request->input('task_status');
+        $task->save();
+        if($request->input('task_status') == 3) {
+          return redirect()->back()->withErrors('Report Rejected');
+        } elseif ($request->input('task_status') == 1) {
+          return redirect()->back()->with('success', 'Report Approved');
+        }
     }
 
     /**
@@ -118,9 +148,9 @@ class TaskController extends Controller
         $task = Task::find($id);
         if(Auth::user()->position == 'manager') {
             $task->delete();
-            return redirect('works')->with('success', 'Task has been deleted');
+            return redirect('manager')->with('success', 'Task has been deleted');
         } else {
-            return redirect('works')->withErrors('Can\'t delete Task, make sure you\'re Manager');
+            return redirect()->back()->withErrors('Can\'t delete Task, make sure you\'re Manager');
         }
     }
 }

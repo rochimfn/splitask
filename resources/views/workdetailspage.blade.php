@@ -1,13 +1,13 @@
 @extends('layouts.default')
 
-@section('title', 'Task Details Page')
+@section('title', 'Work Details Page')
 
 @section('content')
     <div class="d-flex justify-content-between mt-4">
-        <h2>{{ $task['task_name'] }} Details</h2>
+        <h2>{{ $work['work_name'] }} Details</h2>
         <div class="d-flex">
-            <form action="{{ route('manager.tasks.destroy', $task['task_id'])}}" method="post">
-                <button class="btn btn-dark" type="button" onclick="editTask()">Edit Task</button>
+            <form action="{{ route('chief.works.destroy', $work['work_id'])}}" method="post">
+                <button class="btn btn-dark" type="button" onclick="editTask()">Edit Work</button>
                 &nbsp;
                 {{csrf_field()}}
                 @method('DELETE')
@@ -32,26 +32,26 @@
         @endif
         <div class="card">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><h4>Description</h4> <h5>{{$task['task_description']}}</h5></li>
-                <li class="list-group-item"><h4>Deadline</h4> <h5>{{$task['task_deadline']}}</h5></li>
-                <li class="list-group-item"><h4>Asigned to</h4> <h5>{{$task['name']}}</h5></li>
+                <li class="list-group-item"><h4>Description</h4> <h5>{{$work['work_description']}}</h5></li>
+                <li class="list-group-item"><h4>Deadline</h4> <h5>{{$work['work_deadline']}}</h5></li>
+                <li class="list-group-item"><h4>Asigned to</h4> <h5>{{$work['name']}}</h5></li>
                 <li class="list-group-item"><h4>Status</h4>
-                @if($task['task_status'] == 0)
+                @if($work['work_status'] == 0)
                     <h5>On Progress</h5></li>
                     <li class="list-group-item text-right text-white">
                         <button class="btn btn-dark" disabled>See Report</button>&nbsp;<button class="btn btn-dark" disabled>Action</button>&nbsp;
                     </li>
-                @elseif($task['task_status'] == 1)
+                @elseif($work['work_status'] == 1)
                     <h5>Approved</h5></li>
                     <li class="list-group-item text-right text-white">
                         <a class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" disabled>Action</button>&nbsp;
                     </li>
-                @elseif($task['task_status'] == 2)
+                @elseif($work['work_status'] == 2)
                     <h5>Reported</h5></li>
                     <li class="list-group-item text-right text-white">
                         <a class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" onclick="modalAction()"">Action</button>&nbsp;
                     </li>
-                @elseif($task['task_status'] == 3)
+                @elseif($work['work_status'] == 3)
                     <h5>Rejected</h5></li>
                     <li class="list-group-item text-right text-white">
                         <a class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" disabled>Action</button>&nbsp;
@@ -71,10 +71,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="{{route('manager.task.update.status',  $task['task_id'] )}}" id="taskAction">
+                    <form method="post" action="{{route('manager.task.update.status',  $work['work_id'] )}}" id="taskAction">
                         {{csrf_field()}}
                         @method('PATCH')
-                        <input id="task_status" type="hidden" name="task_status" value="">
+                        <input id="work_status" type="hidden" name="work_status" value="">
                     </form>
                     <button type="button" class="btn btn-dark" onclick="taskAction(1)">Approve</button>
                     <button type="button" class="btn btn-dark" onclick="taskAction(3)">Disapprove</button>
@@ -85,13 +85,12 @@
 @endsection
 @section('script')
     @include('inc.script')
-    @include('edittaskpopup')
     <script>
         function modalAction() {
             $("#modalAction").modal();
         }
         function taskAction(value) {
-          document.getElementById('task_status').value = value;
+          document.getElementById('work_status').value = value;
           document.getElementById('taskAction').submit()
         }
     </script>

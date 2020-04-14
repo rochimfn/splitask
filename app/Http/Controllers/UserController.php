@@ -39,9 +39,10 @@ class UserController extends Controller
         return redirect()->back()->with('success','User has been added');
     }
 
-    public function edit($id)
+    public function edit()
     {
-        //
+        $user = Auth::user();
+        return view('accountsettingspage')->with('user', $user);
     }
 
     public function update(Request $request, $id)
@@ -59,6 +60,41 @@ class UserController extends Controller
         if($request->filled('password')) {
             $input['password'] = Hash::make($request->input('password'));
         }
+        $user = User::where('user_id', $id)->first();
+        $user->fill($input);
+        $user->save();
+        return redirect()->back()->with('success', 'User has been updated');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $this->validate(
+            request(),[
+                'user_name' => 'required',
+                'email' => 'required',
+                'profile_picture' => 'mimes:jpg,jpeg,png'           ]
+        );
+
+        $input = $request->except(['_token', '_method', 'password', 'profile_picture']) ;
+
+        if($request->filled('password')) {
+            $input['password'] = Hash::make($request->input('password'));
+        }
+
+        if($request->hasFile('profile_picture')) {
+            $file = $request->file('profile_picture');
+
+            $path = public_path('images/profile_picture');
+
+            $filename = md5(Auth::user()->name)."_".date("Y_m_d_H_i_s");
+            $filename = '.'. $file->getClientOriginalExtension();
+
+            $file->move($path, $filename);
+
+            $input['profile_picture'] = $filename;
+        }
+
+        $id = Auth::user()->user_id;
         $user = User::where('user_id', $id)->first();
         $user->fill($input);
         $user->save();

@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <form method="post" action="" id="editForm" enctype="multipart/form-data">
-                    {{csrf_field()}}
+                    @csrf
                     @method('PATCH')
                     <div class="form-group">
                         <div class="custom-file">

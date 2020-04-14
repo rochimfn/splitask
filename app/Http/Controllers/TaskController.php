@@ -15,32 +15,12 @@ class TaskController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $tasks = Task::join('works', 'tasks.work_id', '=', 'works.work_id')->where('tasks.user_id', Auth::user()->user_id)->orderBy('tasks.work_id')->get();
+        return view('taskspage')->with('tasks', $tasks);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $task = $this->validate(
@@ -58,9 +38,17 @@ class TaskController extends Controller
     }
     public function storeReport(Request $request, $id)
     {
+        $this->validate($request, [
+            'task_report' => 'required|mimes:pdf,doc,docx'
+        ]);
+
+        $task = Task::find($id);
+        $filename = $task['task_name']."_".date("Y_m_d_H_i_s");
         if($request->hasFile('task_report')) {
-            $fileNameToStore = time().'_'.$request->file('work_report')->getClientOriginalName();
-            $path = $request->file('task_report')->storeAs('public/task_report', $fileNameToStore);
+            $path = public_path('reports/tasks');
+            $file = $request->file('task_report');
+            $filename = '.'. $file->getClientOriginalExtension();
+            $file->move($path, $filename);
         }
 //        status list
 //        0 = On Progress
@@ -68,13 +56,14 @@ class TaskController extends Controller
 //        2 = Reported
 //        3 = Rejected
 
-        $task = Task::find($id);
-        $task->task_report = $fileNameToStore;
-        $task->status = 2;
+
+        $task->task_report = $filename;
+        $task->task_status = 2;
         $task->save();
 
         return redirect()->back()->with('success', 'Report Submitted');
     }
+
     public function updateStatusTask(Request $request, $id)
     {
         $task = Task::find($id);
@@ -87,12 +76,6 @@ class TaskController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $task = Task::join('users','tasks.user_id','=','users.user_id')->where('tasks.task_id',$id)->first();
@@ -101,24 +84,6 @@ class TaskController extends Controller
         return view('taskdetailspage')->with('task', $task)->with('users', $users);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $this->validate(
@@ -137,12 +102,6 @@ class TaskController extends Controller
         return redirect()->back()->with('success', 'Task has been updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $task = Task::find($id);

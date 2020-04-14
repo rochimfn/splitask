@@ -44,17 +44,17 @@
                 @elseif($task['task_status'] == 1)
                     <h5>Approved</h5></li>
                     <li class="list-group-item text-right text-white">
-                        <a class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" disabled>Action</button>&nbsp;
+                        <a href="{{ asset('reports/tasks/'.$task['task_report']) }}" target="_blank" class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" disabled>Action</button>&nbsp;
                     </li>
                 @elseif($task['task_status'] == 2)
                     <h5>Reported</h5></li>
                     <li class="list-group-item text-right text-white">
-                        <a class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" onclick="modalAction()"">Action</button>&nbsp;
+                        <a href="{{ asset('reports/tasks/'.$task['task_report']) }}" target="_blank" class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" onclick="modalAction()"">Action</button>&nbsp;
                     </li>
                 @elseif($task['task_status'] == 3)
                     <h5>Rejected</h5></li>
                     <li class="list-group-item text-right text-white">
-                        <a class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" disabled>Action</button>&nbsp;
+                        <a href="{{ asset('reports/tasks/'.$task['task_report']) }}" target="_blank" class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" disabled>Action</button>&nbsp;
                     </li>
                 @endif
             </ul>

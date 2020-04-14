@@ -37,7 +37,11 @@
                             <p>Assigned Date : {{ substr($work['created_at'], 0, 11) }}</p>
                         </div>
                         <div class="col-sm-4">
+                          @if($work['work_status'] == 0 || $work['work_status'] == 3)
                             <button class="btn btn-dark" onclick="addWorkReport({{ $work['work_id'] }})">Add Report</button>
+                          @else
+                            <button class="btn btn-dark" onclick="addWorkReport({{ $work['work_id'] }})" disabled>Add Report</button>
+                          @endif
                         </div>
                     </div>
                 </div>

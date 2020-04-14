@@ -7,11 +7,11 @@
         <h2>{{ $work['work_name'] }} Details</h2>
         <div class="d-flex">
             <form action="{{ route('chief.works.destroy', $work['work_id'])}}" method="post">
-                <button class="btn btn-dark" type="button" onclick="editTask()">Edit Work</button>
+                <button class="btn btn-dark" type="button" onclick="editWork()">Edit Work</button>
                 &nbsp;
                 {{csrf_field()}}
                 @method('DELETE')
-                <button class="btn btn-dark" type="submit" onclick="return confirm('Are you sure want to delete this task?')">Delete</button>
+                <button class="btn btn-dark" type="submit" onclick="return confirm('Are you sure want to delete this work?')">Delete</button>
             </form>
         </div>
     </div>
@@ -44,17 +44,17 @@
                 @elseif($work['work_status'] == 1)
                     <h5>Approved</h5></li>
                     <li class="list-group-item text-right text-white">
-                        <a class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" disabled>Action</button>&nbsp;
+                        <a href="{{ asset('reports/works/'.$work['work_report']) }}" target="_blank" class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" disabled>Action</button>&nbsp;
                     </li>
                 @elseif($work['work_status'] == 2)
                     <h5>Reported</h5></li>
                     <li class="list-group-item text-right text-white">
-                        <a class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" onclick="modalAction()"">Action</button>&nbsp;
+                        <a href="{{ asset('reports/works/'.$work['work_report']) }}" target="_blank" class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" onclick="modalAction()"">Action</button>&nbsp;
                     </li>
                 @elseif($work['work_status'] == 3)
                     <h5>Rejected</h5></li>
                     <li class="list-group-item text-right text-white">
-                        <a class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" disabled>Action</button>&nbsp;
+                        <a href="{{ asset('reports/works/'.$work['work_report']) }}" target="_blank" class="btn btn-dark">See Report</a>&nbsp;<button class="btn btn-dark" disabled>Action</button>&nbsp;
                     </li>
                 @endif
             </ul>
@@ -71,13 +71,13 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="{{route('manager.task.update.status',  $work['work_id'] )}}" id="taskAction">
-                        {{csrf_field()}}
+                    <form method="post" action="{{ route('chief.work.update.status',  $work['work_id'] )}}" id="workAction">
+                        @csrf
                         @method('PATCH')
                         <input id="work_status" type="hidden" name="work_status" value="">
                     </form>
-                    <button type="button" class="btn btn-dark" onclick="taskAction(1)">Approve</button>
-                    <button type="button" class="btn btn-dark" onclick="taskAction(3)">Disapprove</button>
+                    <button type="button" class="btn btn-dark" onclick="workAction(1)">Approve</button>
+                    <button type="button" class="btn btn-dark" onclick="workAction(3)">Disapprove</button>
                   </div>
               </div>
         </div>
@@ -85,13 +85,14 @@
 @endsection
 @section('script')
     @include('inc.script')
+    @include('editworkpopup')
     <script>
         function modalAction() {
             $("#modalAction").modal();
         }
-        function taskAction(value) {
+        function workAction(value) {
           document.getElementById('work_status').value = value;
-          document.getElementById('taskAction').submit()
+          document.getElementById('workAction').submit()
         }
     </script>
 @endsection

@@ -7,17 +7,9 @@ Route::get('/', function ()
     return redirect('login');
 });
 
-
-Route::get('tasks', 'TaskController@index')->name('tasks.index')->middleware('staff');
-Route::get('tasks/{task}', 'TaskController@show')->name('tasks.show');
-Route::post('tasks', 'TaskController@store')->name('tasks.store')->middleware('staff');
-Route::delete('tasks/{user}', 'TaskController@destroy')->name('tasks.destroy')->middleware('staff');
-Route::patch('tasks/{user}', 'TaskController@update')->name('tasks.update')->middleware('staff');
-
-
-
-
-
+// General
+Route::get('accounts', 'UserController@edit')->name('users.edit');
+Route::patch('accounts', 'UserController@updateProfile')->name('users.update.profile');
 
 
 // Administrator
@@ -26,10 +18,11 @@ Route::post('administrator', 'UserController@store')->middleware('admin')->name(
 Route::patch('administrator/{user}', 'UserController@update')->middleware('admin')->name('administrator.update');
 Route::delete('administrator/{user}', 'UserController@destroy')->middleware('admin')->name('administrator.destroy');
 
-
 // Chief
 Route::get('chief', 'WorkController@indexPerDepartment')->middleware('chief')->name('chief.departments.index');
 Route::post('chief', 'WorkController@store')->middleware('chief')->name('chief.departments.store');
+Route::patch('chief/works/{work}', 'WorkController@update')->middleware('chief')->name('chief.works.update');
+Route::patch('chief/works/{work}', 'WorkController@updateStatusWork')->middleware('chief')->name('chief.work.update.status');
 Route::delete('chief/{work}', 'WorkController@destroy')->middleware('chief')->name('chief.works.destroy');
 Route::get('chief/works/{work}', 'WorkController@show')->middleware('chief')->name('chief.task.show');
 Route::patch('chief/{work}', 'WorkController@update')->middleware('chief')->name('chief.works.update');
@@ -44,6 +37,9 @@ Route::patch('manager/task/{task}', 'TaskController@updateStatusTask')->middlewa
 Route::delete('manager/tasks/{user}', 'TaskController@destroy')->middleware('manager')->name('manager.tasks.destroy');
 
 // Staff
+Route::get('staff', 'TaskController@index')->middleware('staff')->name('staff.tasks.index');
+Route::get('staff/{task}', 'TaskController@show')->middleware('staff')->name('staff.tasks.show');
+Route::patch('staff/{task}/report', 'TaskController@storeReport')->middleware('staff')->name('staff.store.report');
 
 Auth::routes(['register' => false]);
 // Route::get('/home', 'HomeController@index')->name('home');

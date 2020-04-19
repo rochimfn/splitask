@@ -47,7 +47,7 @@ class TaskController extends Controller
         if($request->hasFile('task_report')) {
             $path = public_path('reports/tasks');
             $file = $request->file('task_report');
-            $filename = $filename.'.'. $file->getClientOriginalExtension();
+            $filename = '.'. $file->getClientOriginalExtension();
             $file->move($path, $filename);
         }
 //        status list
@@ -55,6 +55,7 @@ class TaskController extends Controller
 //        1 = Approved
 //        2 = Reported
 //        3 = Rejected
+
 
         $task->task_report = $filename;
         $task->task_status = 2;

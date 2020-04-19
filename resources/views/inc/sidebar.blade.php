@@ -8,12 +8,8 @@
             <hr>
 <<<<<<< HEAD
             <a href="{{ route('users.edit') }}" class="d-flex justify-content-center">Account Setting</a>
-            <a class="d-flex justify-content-center" href="{{ route('logout') }}"
-               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            <a href="" class="d-flex justify-content-center" onclick="document.getElementById('logout-form').submit()">Logout</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="post">
                 @csrf
             </form>
 =======

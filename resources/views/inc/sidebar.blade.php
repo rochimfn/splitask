@@ -6,13 +6,6 @@
             <br>
             <h4 class="d-flex justify-content-left">{{ Auth::user()->name }}</h4>
             <hr>
-<<<<<<< HEAD
-            <a href="{{ route('users.edit') }}" class="d-flex justify-content-center">Account Setting</a>
-            <a href="" class="d-flex justify-content-center" onclick="document.getElementById('logout-form').submit()">Logout</a>
-            <form id="logout-form" action="{{ route('logout') }}" method="post">
-                @csrf
-            </form>
-=======
             <a href="#" class="btn btn-light btn-md btn-block disabled" tabindex="-1" role="button" aria-disabled="true">
                 <div class="row">
                     <div class="col-md-2">
@@ -51,7 +44,6 @@
                     </div>
                 </div>
             </a>
->>>>>>> b00723ea45c65633e89af0d53bb41ee7cb6bcb6f
             <hr>
             <h6>Setting</h6>
             <button type="button" class="btn btn-light btn-block" href="{{ route('users.edit') }}">

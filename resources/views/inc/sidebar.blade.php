@@ -6,7 +6,7 @@
             <br>
             <h4 class="d-flex justify-content-left">{{ Auth::user()->name }}</h4>
             <hr>
-            <div class="card bg-transparent border-0">
+            <a href="#" class="btn btn-light btn-md btn-block disabled" tabindex="-1" role="button" aria-disabled="true">
                 <div class="row">
                     <div class="col-md-2">
                         <svg class="bi bi-person" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -17,8 +17,8 @@
                         <p class="d-flex justify-content-left">{{ Auth::user()->user_name }}</p>
                     </div>
                 </div>
-            </div>
-            <div class="card bg-transparent border-0">
+            </a>
+            <a href="#" class="btn btn-light btn-md btn-block disabled" tabindex="-1" role="button" aria-disabled="true">
                 <div class="row">
                     <div class="col-md-2">
                         <svg class="bi bi-envelope" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -31,8 +31,8 @@
                         <p class="d-flex justify-content-left">{{ Auth::user()->email }}</p>
                     </div>
                 </div>
-            </div>
-            <div class="card bg-transparent border-0">
+            </a>
+            <a href="#" class="btn btn-light btn-md btn-block disabled" tabindex="-1" role="button" aria-disabled="true">
                 <div class="row">
                     <div class="col-md-2">
                         <svg class="bi bi-people" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +43,7 @@
                         <p class="d-flex justify-content-left">{{ ucfirst(Auth::user()->position) }}</p>
                     </div>
                 </div>
-            </div>
+            </a>
             <hr>
             <h6>Setting</h6>
             <button type="button" class="btn btn-light btn-block" href="{{ route('users.edit') }}">

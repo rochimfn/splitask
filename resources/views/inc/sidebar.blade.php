@@ -11,8 +11,12 @@
             <p class="d-flex justify-content-center">{{ ucfirst(Auth::user()->position) }}</p>
             <hr>
             <a href="{{ route('users.edit') }}" class="d-flex justify-content-center">Account Setting</a>
-            <a href="" class="d-flex justify-content-center" onclick="document.getElementById('logout-form').submit()">Logout</a>
-            <form id="logout-form" action="{{ route('logout') }}" method="post">
+            <a class="d-flex justify-content-center" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
             <hr>

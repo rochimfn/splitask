@@ -19,7 +19,7 @@ Route::patch('administrator/{user}', 'UserController@update')->middleware('admin
 Route::delete('administrator/{user}', 'UserController@destroy')->middleware('admin')->name('administrator.destroy');
 
 // Chief
-Route::get('chief', 'WorkController@indexPerDepartment')->middleware('chief')->name('chief.departments.index');
+Route::get('chief', 'DepartmentController@index')->middleware('chief')->name('chief.departments.index');
 Route::post('chief', 'WorkController@store')->middleware('chief')->name('chief.departments.store');
 Route::patch('chief/works/{work}', 'WorkController@update')->middleware('chief')->name('chief.works.update');
 Route::patch('chief/works/{work}', 'WorkController@updateStatusWork')->middleware('chief')->name('chief.work.update.status');

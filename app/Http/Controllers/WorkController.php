@@ -25,12 +25,6 @@ class WorkController extends Controller
         $users = User::where('department_id', $department_id)->get();
         return view('workpage')->with('users', $users)->with('works', $works)->with('tasks', $tasks);
     }
-    public function indexPerDepartment()
-    {
-        $department = Department::join('users', 'departments.department_id', '=', 'users.department_id')->where('users.position', 'manager')->get();
-        $works = Work::all();
-        return view('departmentpage')->with('departments', $department)->with('works', $works);
-    }
 
     public function store(Request $request)
     {

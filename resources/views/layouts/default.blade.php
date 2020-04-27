@@ -1,6 +1,6 @@
 @include('inc.head')
 <body>
-<div class="container-fluid">
+<div class="container-fluid bg-white">
     <div class="row">
         <div class="col-md-3">
             @include('inc.sidebar')

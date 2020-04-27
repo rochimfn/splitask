@@ -41,8 +41,8 @@ class UserController extends Controller
 
     public function edit()
     {
-        $user = Auth::user();
-        return view('accountsettingspage')->with('user', $user);
+        $department = Department::find(Auth::user()->department_id);
+        return view('accountsettingspage')->with('department', $department);
     }
 
     public function update(Request $request, $id)
@@ -75,7 +75,7 @@ class UserController extends Controller
                 'profile_picture' => 'mimes:jpg,jpeg,png'           ]
         );
 
-        $input = $request->except(['_token', '_method', 'password', 'profile_picture']) ;
+        $input = $request->only(['user_name','email']) ;
 
         if($request->filled('password')) {
             $input['password'] = Hash::make($request->input('password'));
@@ -87,7 +87,7 @@ class UserController extends Controller
             $path = public_path('images/profile_picture');
 
             $filename = md5(Auth::user()->name)."_".date("Y_m_d_H_i_s");
-            $filename = '.'. $file->getClientOriginalExtension();
+            $filename = $filename.'.'. $file->getClientOriginalExtension();
 
             $file->move($path, $filename);
 

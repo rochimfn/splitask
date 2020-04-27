@@ -2,9 +2,9 @@
 /public/hot
 /public/storage
 /public/reports
-/public/images
 /storage/*.key
 /vendor
+/.phpintel
 .env
 .env.backup
 .phpunit.result.cache

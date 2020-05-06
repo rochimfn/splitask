@@ -7,18 +7,15 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <title>Account Settings Page</title>
 </head>
-<body>
-<div class="container bg-white">
-  <div class="row">
-    <div class="col-md-3">
-      
-    </div>
-    <div class="col-md-6">
+<body class="bg-blue-splitask">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 bg-white my-3 rounded">
       <form method="post" action="{{ url()->current() }}"  enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <div class="d-flex justify-content-between mt-4">
-            <h2>Account Settings</h2><a href="{{ url('/') }}">Go back</a>
+            <h2>Account Settings</h2><a href="{{ url('/') }}"><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 24 24" width="24"><path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>Go back</a>
         </div>
         <div class="mt-4">
             @if (\Session::has('success'))
@@ -69,16 +66,13 @@
           <div class="form-group">
               <label for="department">Department</label>
               <input type="text" value="{{ $department->department_name }}" class="form-control" disabled>
-          </div>          
+          </div>
           <div class="form-group">
               <button class="btn btn-success" id="saveButton">Update</button>
               <button class="btn btn-primary" type="button" onClick="window.location.href=window.location.href">Cancel</button>
           </div>
         </div>
       </form>
-    </div>
-    <div class="col-md-3">
-      
     </div>
   </div>
   @include('inc.script')

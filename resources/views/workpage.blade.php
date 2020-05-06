@@ -22,7 +22,7 @@
             </div>
         @endif
             @foreach($works as $work)
-        <div id="accordion" class="mt-3 col-md-8">
+        <div id="accordion" class="mt-3 col-md-12 col-lg-10">
             <div class="card">
                 <div class="card-header" id="heading{{$work['work_id']}}">
                     <h5 class="mb-0">

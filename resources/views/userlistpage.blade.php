@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                 @endif
-                <table class="table mt-2">
+                <table class="table table-responsive-sm mt-2">
                     <thead class="thead-dark">
                     <tr>
                         <th scope="col">Name</th>

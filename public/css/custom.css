@@ -26,9 +26,9 @@ header,
   background-color: #3f51b5 !important;
 }
 
-.navbar:not(.top-nav-collapse) {
-  background: transparent !important;
-}
+/*.navbar:not(.top-nav-collapse) {*/
+/*  background: transparent !important;*/
+/*}*/
 
 @media (max-width: 991px) {
   .navbar:not(.top-nav-collapse) {
@@ -52,4 +52,36 @@ header,
 
 h6 {
   line-height: 1.7;
+}
+
+
+
+
+.full-height {
+    min-height: calc(100vh - 55px);
+}
+.bg-images {
+    background-image: url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.bg-blue-splitask{
+    background-color: #64b5f6;
+}
+
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .position-md-fixed {
+        position: fixed !important;
+    }
+    .offset-md-fixed, offset-lg-fixed {
+        margin-left: 33.333333%;
+    }
+}
+@media (min-width: 992px) {
+    .offset-lg-fixed {
+        margin-left: 25%;
+    }
 }

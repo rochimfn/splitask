@@ -8,6 +8,9 @@
         <div class="col-md-8 col-lg-9 offset-md-fixed offset-lg-fixed">
             @yield('content')
         </div>
+        <div class="col-md-4 col-lg-3 bg-blue-splitask position-md-fixed h-100 d-md-none">
+            @include('inc.sidebarfooter')
+        </div>
     </div>
 </div>
 @yield('script')

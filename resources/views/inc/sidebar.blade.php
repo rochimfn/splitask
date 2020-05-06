@@ -44,6 +44,7 @@
                 </div>
             </a>
             <hr>
+            <div class="d-none d-md-block">
             <h6>Setting</h6>
             <button type="button" class="btn btn-light btn-block" onClick="return window.location.href='{{ route('users.edit') }}'">
                 <div class="row align-middle">
@@ -75,3 +76,4 @@
                     </div>
                 </div>
             </button>
+            </div>

@@ -69,7 +69,12 @@ h6 {
 .bg-blue-splitask{
     background-color: #64b5f6;
 }
-
+div.card-header p {
+  margin-bottom: 0;
+}
+div.card-header h3 {
+  margin-bottom: 0;
+}
 
 /* Media Queries */
 @media (min-width: 768px) {

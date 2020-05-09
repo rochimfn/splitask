@@ -2,16 +2,16 @@
 
 @section('content')
 
-    <div class="card col-md-6 bg-white" style="width: 18rem;">
+    <div class="card col-md-4 bg-white" style="width: 18rem;">
         <div class="card-header bg-white text-center">
-            <h3>{{ config('app.name', 'Laravel') }} {{ __('Login') }}</h3>
+            <h3>{{ __('Login') }}</h3>
         </div>
         <br>
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
             <div class="form-group row">
-            <label for="user_name" class="col-md-4 col-form-label">{{ __('Username') }}</label>
+            <!-- <label for="user_name" class="col-md-4 col-form-label">{{ __('Username') }}</label> -->
 
                 <div class="col-md-8 mx-auto">
                     <input id="user_name" type="text" placeholder="Username" class="form-control @error('user_name') is-invalid @enderror" name="user_name" value="{{ old('user_name') }}" required autocomplete="username" autofocus>
@@ -25,7 +25,7 @@
             </div>
 
             <div class="form-group row">
-            <label for="password" class="col-md-4 col-form-label">{{ __('Password') }}</label>
+            <!-- <label for="password" class="col-md-4 col-form-label">{{ __('Password') }}</label> -->
 
                 <div class="col-md-8 mx-auto">
                     <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">

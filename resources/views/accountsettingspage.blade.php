@@ -79,7 +79,7 @@
   <script type="text/javascript">
     function readURL(input) {
         if (input.files && input.files[0]) {
-            document.querySelector('label').textContent = input.files[0].name;
+            document.querySelector('label[for="customFile"]').textContent = input.files[0].name;
             var reader = new FileReader();
 
             reader.onload = function (e) {

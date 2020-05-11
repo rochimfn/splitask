@@ -13,10 +13,11 @@
                     @method('PATCH')
                     <div class="form-group">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="work_report" id="customFile" required>
+                            <input type="file" class="custom-file-input" name="work_report" id="customFile" onchange="displayReportName(this)" required>
                             <label class="custom-file-label" for="customFile">Choose report file</label>
                         </div>
                     </div>
+                    
                     <button type="submit" class="btn btn-dark">Submit Report</button>
                 </form>
             </div>
@@ -28,4 +29,10 @@
         document.querySelector('#editForm').action = `{{ action('WorkController@index') }}/${work}/report`;
         $("#addWorkReport").modal()
     }
+    function displayReportName(input) {
+        if (input.files && input.files[0]) {
+            document.querySelector('label[for="customFile"]').textContent = input.files[0].name;
+        }
+    }
+  </script>
 </script>

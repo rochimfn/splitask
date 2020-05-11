@@ -21,7 +21,7 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <body class="bg-images">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-nav-transparent fixed-top scrolling-navbar">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
@@ -41,7 +41,8 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <button class="btn btn-outline-light" type="button" href="{{ route('login') }}">{{ __('Login') }}</button>
+                            <!-- <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a> -->
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">

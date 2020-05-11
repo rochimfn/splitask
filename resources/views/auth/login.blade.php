@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <div class="card col-md-4 bg-white" style="width: 18rem;">
-        <div class="card-header bg-white text-center">
+    <div class="card col-md-4 text-light" style="width: 18rem;">
+        <div class="card-header text-center">
             <h3>{{ __('Login') }}</h3>
         </div>
         <br>

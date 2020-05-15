@@ -26,9 +26,9 @@ header,
   background-color: #3f51b5 !important;
 }
 
-.navbar:not(.top-nav-collapse) {
-  background: transparent !important;
-}
+/*.navbar:not(.top-nav-collapse) {*/
+/*  background: transparent !important;*/
+/*}*/
 
 @media (max-width: 991px) {
   .navbar:not(.top-nav-collapse) {
@@ -38,7 +38,7 @@ header,
 
 .rgba-gradient {
   background: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
-  background: -webkit-gradient(linear, 45deg, from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%)));
+  background: -webkit-gradient(linear, 45deg, from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%));
   background: linear-gradient(to 45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
 }
 
@@ -52,4 +52,47 @@ header,
 
 h6 {
   line-height: 1.7;
+}
+
+
+
+
+.full-height {
+    min-height: calc(100vh - 55px);
+}
+.bg-images {
+    background-image: url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.bg-blue-splitask{
+    background-color: #64b5f6;
+}
+<<<<<<< HEAD
+
+.bg-nav-transparent{
+    background-color: rgba(0,0,0,0.5);
+=======
+div.card-header p {
+  margin-bottom: 0;
+}
+div.card-header h3 {
+  margin-bottom: 0;
+>>>>>>> 0209110d4c1a9a82c9c74fc9b3deb2d0e435c063
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .position-md-fixed {
+        position: fixed !important;
+    }
+    .offset-md-fixed, offset-lg-fixed {
+        margin-left: 33.333333%;
+    }
+}
+@media (min-width: 992px) {
+    .offset-lg-fixed {
+        margin-left: 25%;
+    }
 }

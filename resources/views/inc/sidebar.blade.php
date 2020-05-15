@@ -1,10 +1,9 @@
             <br>
             <!-- <h3 class="d-flex justify-content-center">Account Information</h3>
             <br> -->
-            <img src="https://api.adorable.io/avatars/128/abott@adorable.png" class="rounded-circle d-block mr-md-3 border-right" alt="profilepicture">
+            <img src="{{ asset('images/profile_picture/'. Auth::user()->profile_picture ) }}" class="rounded-circle d-block mx-auto d-block border-right" width="164px" alt="profilepicture">
             <br>
-            <br>
-            <h4 class="d-flex justify-content-left">{{ Auth::user()->name }}</h4>
+            <h4 class="d-flex justify-content-center">{{ Auth::user()->name }}</h4>
             <hr>
             <a href="#" class="btn btn-light btn-md btn-block disabled" tabindex="-1" role="button" aria-disabled="true">
                 <div class="row">
@@ -45,8 +44,9 @@
                 </div>
             </a>
             <hr>
+            <div class="d-none d-md-block">
             <h6>Setting</h6>
-            <button type="button" class="btn btn-light btn-block" href="{{ route('users.edit') }}">
+            <button type="button" class="btn btn-light btn-block" onClick="return window.location.href='{{ route('users.edit') }}'">
                 <div class="row align-middle">
                     <div class="col-md-2">
                         <svg class="bi bi-gear" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </button>
-            <button type="button" class="btn btn-light btn-block" onclick="document.getElementById('logout-form').submit()">
+            <button type="button" class="btn btn-light btn-block mb-2" onclick="document.getElementById('logout-form').submit()">
                 <div class="row align-middle">
                     <div class="col-md-2">
                         <svg class="bi bi-x-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -76,3 +76,4 @@
                     </div>
                 </div>
             </button>
+            </div>

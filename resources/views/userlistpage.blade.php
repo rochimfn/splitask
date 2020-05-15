@@ -4,7 +4,9 @@
 
 @section('content')
             <div class="d-flex justify-content-between mt-4">
-                <h2>User List</h2>
+                <span>
+                    <h2>User List</h2>
+                </span>
                 <button class="btn btn-dark" onclick="addUser()">+ Add User</button>
             </div>
             <div class="mt-2">
@@ -22,7 +24,7 @@
                         </ul>
                     </div>
                 @endif
-                <table class="table mt-2">
+                <table class="table table-responsive-sm mt-2">
                     <thead class="thead-dark">
                     <tr>
                         <th scope="col">Name</th>

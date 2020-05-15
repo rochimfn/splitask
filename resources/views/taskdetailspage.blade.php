@@ -4,7 +4,11 @@
 
 @section('content')
     <div class="d-flex justify-content-between mt-4">
-        <h2>{{ $task['task_name'] }} Details</h2>
+        <span>
+            <h2>{{ $task['task_name'] }} Details</h2>
+            <a href="{{ url('/') }}">
+            <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 24 24" width="24"><path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>Go back</a>
+        </span>
         <div class="d-flex">
             <form action="{{ route('manager.tasks.destroy', $task['task_id'])}}" method="post">
                 <button class="btn btn-dark" type="button" onclick="editTask()">Edit Task</button>

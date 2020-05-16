@@ -3,9 +3,11 @@
 @section('content')
 
     <div class="card col-md-4 text-light" style="width: 18rem;">
-        <div class="card-header text-center">
-            <h3>{{ __('Login') }}</h3>
-        </div>
+        <!-- <div class="card-header text-center"> -->
+            <br>
+            <h3 class="text-center">{{ __('Login') }}</h3>
+            <hr>
+        <!-- </div> -->
         <br>
         <form method="POST" action="{{ route('login') }}">
             @csrf

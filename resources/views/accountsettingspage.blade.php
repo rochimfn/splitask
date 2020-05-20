@@ -10,13 +10,21 @@
 <body class="bg-blue-splitask">
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-6 bg-white my-3 rounded">
+    <div class="bg-light col-md-6 my-3 rounded">
       <form method="post" action="{{ url()->current() }}"  enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <div class="d-flex justify-content-between mt-4">
-            <h2>Account Settings</h2><a href="{{ url('/') }}"><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 24 24" width="24"><path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>Go back</a>
+            <h2 class="text-center">Account Settings</h2>
+            <a href="{{ url('/') }}">
+                <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 24 24" width="24">
+                    <path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/>
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                </svg>
+                <!-- Go back -->
+            </a>
         </div>
+        <hr>
         <div class="mt-4">
             @if (\Session::has('success'))
                 <div class="alert alert-success">
@@ -34,7 +42,7 @@
             @endif
         </div>
         <div class="form-group">
-          <img src="{{ asset('images/profile_picture/'. Auth::user()->profile_picture ) }}" class="rounded-circle d-block mx-auto" width="360px" alt="profilepicture" id="profilePict">
+          <img src="{{ asset('images/profile_picture/'. Auth::user()->profile_picture ) }}" class="img-fluid rounded-circle d-block mx-auto" width="360px" alt="profilepicture" id="profilePict">
         </div>
         <div class="form-group">
               <div class="custom-file">
@@ -68,8 +76,8 @@
               <input type="text" value="{{ $department->department_name }}" class="form-control" disabled>
           </div>
           <div class="form-group">
-              <button class="btn btn-success" id="saveButton">Update</button>
-              <button class="btn btn-primary" type="button" onClick="window.location.href=window.location.href">Cancel</button>
+              <button class="btn btn-dark" id="saveButton">Update</button>
+              <button class="btn btn-outline-dark" type="button" onClick="window.location.href=window.location.href">Cancel</button>
           </div>
         </div>
       </form>

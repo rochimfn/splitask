@@ -77,7 +77,7 @@ class UserController extends Controller
                 'profile_picture' => 'mimes:jpg,jpeg,png'           ]
         );
 
-        $input = $request->only(['user_name','email']) ;
+        $input = $request->only(['name','email']) ;
 
         if($request->filled('password')) {
             $input['password'] = Hash::make($request->input('password'));

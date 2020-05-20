@@ -21,7 +21,8 @@ Route::get('administrator', 'UserController@index')->middleware('admin')->name('
 Route::post('administrator', 'UserController@store')->middleware('admin')->name('administrator.store');
 Route::patch('administrator/{user}', 'UserController@update')->middleware('admin')->name('administrator.update');
 Route::delete('administrator/{user}', 'UserController@destroy')->middleware('admin')->name('administrator.destroy');
-
+Route::post('administrator/departments', 'DepartmentController@store')->middleware('admin')->name('administrator.departments.store');
+Route::delete('administrator/departments/{department}', 'DepartmentController@destroy')->middleware('admin')->name('administrator.departments.destroy');
 // Chief
 Route::get('chief', 'DepartmentController@index')->middleware('chief')->name('chief.departments.index');
 Route::post('chief', 'WorkController@store')->middleware('chief')->name('chief.departments.store');

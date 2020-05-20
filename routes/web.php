@@ -6,6 +6,10 @@ Route::get('/', function ()
 {
     return redirect('login');
 });
+Route::get('/home', function ()
+{
+    return redirect('/');
+});
 
 // General
 Route::get('accounts', 'UserController@edit')->name('users.edit');

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Task;
+use App\Work;
 use Illuminate\Http\Request;
 use App\User;
 use App\Department;
@@ -70,7 +72,7 @@ class UserController extends Controller
     {
         $this->validate(
             request(),[
-                'user_name' => 'required',
+                'name' => 'required',
                 'email' => 'required',
                 'profile_picture' => 'mimes:jpg,jpeg,png'           ]
         );
@@ -103,11 +105,28 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        if(Auth::user()->user_id == $id) {
-            return redirect('users')->withErrors('Can\'t delete');
+        if (Auth::user()->position != 'administrator') {
+            return redirect()->route('administrator.index')->withErrors('Are you administrator?');
+        }elseif (Auth::user()->user_id == $id) {
+            return redirect()->route('administrator.index')->withErrors('Can\'t delete you\'r self');
         }
+
+        $tasks = Task::where('user_id', $id)->get();
+        foreach ($tasks as $task) {
+            if ( $task['task_status'] != 2 ) {
+                return redirect()->route('administrator.index')->withErrors('User have unfinished task');
+            }
+        }
+
+        $works = Work::where('user_id', $id)->get();
+        foreach ($works as $work) {
+            if ( $work['work_status'] != 2 ) {
+                return redirect()->route('administrator.index')->withErrors('User have unfinished work');
+            }
+        }
+
         $user = User::find($id);
         $user->delete();
-        return redirect()->back()->with('success','User has been deleted');
+        return redirect()->route('administrator.index')->with('success','User has been deleted');
     }
 }

@@ -61,7 +61,7 @@ h6 {
     min-height: calc(100vh - 55px);
 }
 .bg-images {
-    background-image: url('https://image.freepik.com/free-vector/office-workplace-interior-with-computer-table_107791-1837.jpg');
+    background-image: url("images/background/1837.jpg") !important;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;

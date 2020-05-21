@@ -38,7 +38,7 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><h4>Description</h4> <h5>{{$work['work_description']}}</h5></li>
                 <li class="list-group-item"><h4>Deadline</h4> <h5>{{$work['work_deadline']}}</h5></li>
-                <li class="list-group-item"><h4>Asigned to</h4> <h5>{{$work['name']}}</h5></li>
+                <li class="list-group-item"><h4>Assigned to</h4> <h5>{{$work['name']}}</h5></li>
                 <li class="list-group-item"><h4>Status</h4>
                 @if($work['work_status'] == 0)
                     <h5>On Progress</h5></li>

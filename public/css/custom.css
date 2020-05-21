@@ -43,7 +43,7 @@ header,
 }
 
 .card {
-  background-color: rgba(126, 123, 215, 0.2);
+  background-color: rgba(100, 181, 246, 0.6);
 }
 
 .md-form label {
@@ -61,17 +61,17 @@ h6 {
     min-height: calc(100vh - 55px);
 }
 .bg-images {
-    background-image: url("/images/background/1837.jpg") !important;
+    background-image: url("/images/background/3327591-2.jpg") !important;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
 }
 .bg-blue-splitask{
-    background-color: #64b5f6;
+    background-color: rgb(100, 181, 246);
 }
 
 .bg-nav-transparent{
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(100, 181, 246, 0.6);
 div.card-header p {
   margin-bottom: 0;
 }

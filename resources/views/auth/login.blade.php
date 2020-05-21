@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="card col-md-4 text-light" style="width: 18rem;">
+    <div class="card col-md-4 text-light py-3" style="width: 18rem;">
         <!-- <div class="card-header text-center"> -->
             <br>
             <h3 class="text-center">{{ __('Login') }}</h3>
@@ -60,7 +60,7 @@
                     <br>
 
                     @if (Route::has('password.request'))
-                        <a class="btn btn-link btn-block text-center" href="{{ route('password.request') }}">
+                        <a class="btn btn-link btn-block text-center text-light" href="{{ route('password.request') }}">
                             {{ __('Forgot Your Password?') }}
                         </a>
                     @endif

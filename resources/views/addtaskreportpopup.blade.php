@@ -13,7 +13,7 @@
                     @method('PATCH')
                     <div class="form-group">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="task_report" id="customFile" onchange="displayReportName(this)" required>
+                            <input type="file" class="custom-file-input" name="task_report" id="customFile" onchange="displayReportName(this)" accept=".doc,.docx,.pdf" required>
                             <label class="custom-file-label" for="customFile">Choose report file</label>
                         </div>
                     </div>

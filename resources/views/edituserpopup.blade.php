@@ -25,7 +25,7 @@
                         <input type="email" name="email" id="email" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
+                        <label for="password">Password <em class="text-info"> *leave blank if you don't want to change</em></label>
                         <input type="text" name="password" id="password" class="form-control">
                     </div>
                     <div class="form-group">

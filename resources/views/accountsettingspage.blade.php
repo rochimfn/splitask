@@ -43,7 +43,7 @@
         </div>
         <div class="form-group">
             <img src="{{ asset('images/profile_picture/'. Auth::user()->profile_picture ) }}" class="img-fluid rounded-circle d-block mx-auto" width="360px" alt="profilepicture" id="profilePict">
-            <em class="text-info">*gunakan gambar dengan dimensi 1:1</em>
+            <em class="text-info">*use an image with dimensions of 1:1</em>
         </div>
         <div class="form-group">
               <div class="custom-file">
@@ -65,8 +65,8 @@
               <input type="email" name="email" id="email" class="form-control" value="{{ Auth::user()->email }}">
           </div>
           <div class="form-group">
-              <label for="password">Password</label>
-              <input type="text" name="password" id="password" class="form-control">
+              <label for="password">Password <em class="text-info"> *leave blank if you don't want to change</em></label>
+              <input type="password" name="password" id="password" class="form-control">
           </div>
           <div class="form-group">
               <label for="role">Role</label>

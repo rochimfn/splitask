@@ -78,7 +78,7 @@
           </div>
           <div class="form-group">
               <button class="btn btn-dark" id="saveButton">Update</button>
-              <button class="btn btn-outline-dark" type="button" onClick="window.location.href=window.location.href">Cancel</button>
+              <button class="btn btn-danger" type="button" onClick="window.location.href=window.location.href">Cancel</button>
           </div>
         </div>
       </form>

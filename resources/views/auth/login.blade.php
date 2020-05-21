@@ -5,7 +5,7 @@
     <div class="card col-md-4 text-light py-3" style="width: 18rem;">
         <!-- <div class="card-header text-center"> -->
             <br>
-            <h3 class="text-center">{{ __('Login') }}</h3>
+            <h3 class="text-center text-dark">{{ __('Login') }}</h3>
             <hr>
         <!-- </div> -->
         <br>
@@ -45,7 +45,7 @@
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                        <label class="form-check-label" for="remember">
+                        <label class="form-check-label text-dark" for="remember">
                             {{ __('Remember Me') }}
                         </label>
                     </div>
@@ -60,7 +60,7 @@
                     <br>
 
                     @if (Route::has('password.request'))
-                        <a class="btn btn-link btn-block text-center text-light" href="{{ route('password.request') }}">
+                        <a class="btn btn-link btn-block text-center text-dark" href="{{ route('password.request') }}">
                             {{ __('Forgot Your Password?') }}
                         </a>
                     @endif

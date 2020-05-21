@@ -55,7 +55,7 @@
                             @endif
                         @endforeach
                         <div class="text-center">
-                            <button class="btn btn-light" onclick="addTask({{ $work['work_id'] }})">+ Add Task</button>
+                            <button class="btn btn-dark" onclick="addTask({{ $work['work_id'] }})">+ Add Task</button>
                         </div>
                     </div>
                 </div>

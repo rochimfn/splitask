@@ -15,7 +15,7 @@
                 &nbsp;
                 {{csrf_field()}}
                 @method('DELETE')
-                <button class="btn btn-dark" type="submit" onclick="return confirm('Are you sure want to delete this work?')">Delete</button>
+                <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure want to delete this work?')">Delete</button>
             </form>
         </div>
     </div>

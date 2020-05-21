@@ -7,7 +7,10 @@
                 <span>
                     <h2>User List</h2>
                 </span>
+                <div class="form-group">
+                <button class="btn btn-dark" onclick="manageDepartmentsModal()">Manage Departments</button>
                 <button class="btn btn-dark" onclick="addUser()">+ Add User</button>
+                </div>
             </div>
             <div class="mt-2">
                 @if (\Session::has('success'))
@@ -44,7 +47,7 @@
                             <form action="{{ route('administrator.destroy', $user['user_id']) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-dark d-inline" type="submit" onclick="return confirm('Are you sure want to delete this user?')">Delete</button>
+                                <button class="btn btn-danger d-inline" type="submit" onclick="return confirm('Are you sure want to delete this user?')">Delete</button>
                             </form>
                         </td>
                     </tr>
@@ -53,7 +56,7 @@
                 </table>
                 {{ $users->links() }}
             </div>
-            <button class="btn btn-primary" onclick="manageDepartmentsModal()">Manage Departments</button>
+            
 @endsection
 @section('script')
     @include('inc.script')

@@ -40,7 +40,7 @@
                             @endif
                         @endforeach
                         <div class="text-center">
-                            <button class="btn btn-light" onclick="addWork({{ $department['department_id'] }},{{ $department['user_id']}})">+ Add Work</button>
+                            <button class="btn btn-dark" onclick="addWork({{ $department['department_id'] }},{{ $department['user_id']}})">+ Add Work</button>
                         </div>
                     </div>
                 </div>

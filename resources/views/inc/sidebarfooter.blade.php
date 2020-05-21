@@ -24,9 +24,6 @@
             </div>
             <div>
                 <p class="d-flex justify-content-left">Logout</p>
-                <form id="logout-form" action="{{ route('logout') }}" method="post">
-                    @csrf
-                </form>
             </div>
         </div>
     </button>

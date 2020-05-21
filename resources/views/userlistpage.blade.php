@@ -42,7 +42,7 @@
                         <td><button href="" class="btn btn-dark" onclick="editUser('user{{$user['user_id']}}')">Edit</button></td>
                         <td>
                             <form action="{{ route('administrator.destroy', $user['user_id']) }}" method="post">
-                                {{csrf_field()}}
+                                @csrf
                                 @method('DELETE')
                                 <button class="btn btn-dark d-inline" type="submit" onclick="return confirm('Are you sure want to delete this user?')">Delete</button>
                             </form>
@@ -53,9 +53,11 @@
                 </table>
                 {{ $users->links() }}
             </div>
+            <button class="btn btn-primary" onclick="manageDepartmentsModal()">Manage Departments</button>
 @endsection
 @section('script')
     @include('inc.script')
+    @include('managedepartmentspopup')
     @include('edituserpopup')
     @include('adduserpopup')
 @endsection

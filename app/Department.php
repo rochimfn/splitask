@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     protected $primaryKey = 'department_id';
+    protected $fillable = ['department_name'];
     public function users() {
         return $this->hasMany('App\User','department_id');
     }

@@ -42,7 +42,8 @@
             @endif
         </div>
         <div class="form-group">
-          <img src="{{ asset('images/profile_picture/'. Auth::user()->profile_picture ) }}" class="img-fluid rounded-circle d-block mx-auto" width="360px" alt="profilepicture" id="profilePict">
+            <img src="{{ asset('images/profile_picture/'. Auth::user()->profile_picture ) }}" class="img-fluid rounded-circle d-block mx-auto" width="360px" alt="profilepicture" id="profilePict">
+            <em class="text-info">*gunakan gambar dengan dimensi 1:1</em>
         </div>
         <div class="form-group">
               <div class="custom-file">
